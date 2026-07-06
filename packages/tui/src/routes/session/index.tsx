@@ -1279,6 +1279,7 @@ export function Session() {
                   )}
                 </For>
               </scrollbox>
+              <box height={1} border={["top"]} borderColor={theme.borderSubtle} flexShrink={0} />
               <box flexShrink={0}>
                 <Show when={permissions().length > 0}>
                   <PermissionPrompt
