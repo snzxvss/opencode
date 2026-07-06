@@ -1384,9 +1384,6 @@ function UserMessage(props: {
         <box
           id={props.message.id}
           ref={(el: BoxRenderable) => alwaysSeparate.add(el)}
-          border={["left"]}
-          borderColor={color()}
-          customBorderChars={SplitBorder.customBorderChars}
           marginTop={props.index === 0 ? 0 : 1}
         >
           <box
@@ -1397,13 +1394,10 @@ function UserMessage(props: {
               setHover(false)
             }}
             onMouseUp={props.onMouseUp}
-            paddingTop={1}
-            paddingBottom={1}
             paddingLeft={2}
-            backgroundColor={hover() ? theme.backgroundElement : theme.backgroundPanel}
             flexShrink={0}
           >
-            <text fg={theme.text}>{text()}</text>
+            <text fg={theme.textMuted}>&gt; </text><text fg={theme.text}>{text()}</text>
             <Show when={files().length}>
               <box flexDirection="row" paddingBottom={metadataVisible() ? 1 : 0} paddingTop={1} gap={1} flexWrap="wrap">
                 <For each={files()}>
@@ -1520,13 +1514,11 @@ function AssistantMessage(props: { message: AssistantMessage; parts: Part[]; las
       <Show when={props.message.error && props.message.error.name !== "MessageAbortedError"}>
         <box
           ref={(el: BoxRenderable) => alwaysSeparate.add(el)}
-          border={["left"]}
           paddingTop={1}
           paddingBottom={1}
           paddingLeft={2}
           marginTop={1}
           backgroundColor={theme.backgroundPanel}
-          customBorderChars={SplitBorder.customBorderChars}
           borderColor={theme.error}
         >
           <text fg={theme.textMuted}>{errorMessage(props.message.error)}</text>
